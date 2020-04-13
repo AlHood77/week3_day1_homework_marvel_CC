@@ -23,10 +23,119 @@ Use the supplied data as the source of data to answer the questions. Copy the SQ
 ## Questions
 
 1.  Return ALL the data in the 'movies' table.
+
+SELECT * FROM movies
+
+Returns
+
+id |                title                | year | show_time 
+----+-------------------------------------+------+-----------
+  1 | Iron Man                            | 2008 | 17:00
+  2 | The Incredible Hulk                 | 2008 | 23:55
+  3 | Iron Man 2                          | 2010 | 18:45
+  4 | Thor                                | 2011 | 15:45
+  5 | Captain America: The First Avenger  | 2011 | 14:15
+  6 | Avengers Assemble                   | 2012 | 14:45
+  7 | Iron Man 3                          | 2013 | 21:55
+  8 | Thor: The Dark World                | 2013 | 22:55
+  9 | Batman Begins                       | 2005 | 13:40
+ 10 | Captain America: The Winter Soldier | 2014 | 18:25
+ 11 | Guardians of the Galaxy             | 2014 | 13:10
+ 12 | Avengers: Age of Ultron             | 2015 | 20:20
+ 13 | Ant-Man                             | 2015 | 13:00
+ 14 | Captain America: Civil War          | 2016 | 12:35
+
 2.  Return ONLY the name column from the 'people' table
+
+SELECT name FROM people;
+
+Result
+
+name         
+----------------------
+ Homer Simpson
+ Marge Simpson
+ Lisa Simpson
+ Maggie Simpson
+ Patty Bouvier
+ Selma Bouvier
+ Kent Brockman
+ Ned Flanders
+ Barney Gumble
+ Itchy
+ Eric Cartman
+ Scratchy
+ Crusty the Clown
+ Montgomery Burns
+
+
 3.  Oops! Someone spelled Krusty The Clown's name wrong! Change it to reflect the proper spelling (Crusty should be Krusty).
+
+UPDATE people SET name = ('Krusty the Clown') WHERE name = 'Crusty the Clown';
+
+SELECT name FROM people
+
+Result
+name         
+----------------------
+ Homer Simpson
+ Marge Simpson
+ Lisa Simpson
+ Maggie Simpson
+ Patty Bouvier
+ Selma Bouvier
+ Kent Brockman
+ Ned Flanders
+ Barney Gumble
+ Itchy
+ Eric Cartman
+ Scratchy
+ Montgomery Burns
+ Mayor Joe Quimby
+ Groundskeeper Willie
+ Krusty the Clown
+(16 rows)
+
 4.  Return ONLY Homer Simpson's name from the 'people' table.
+
+SELECT name FROM people WHERE name = 'Homer Simpson'
+
+Result
+name      
+---------------
+ Homer Simpson
+(1 row)
+
 5.  The cinema is showing 'Batman Begins', but Batman is DC, not Marvel! Delete the entry from the 'movies' table.
+
+
+DELETE FROM movies WHERE title = 'Batman Begins';
+
+SELECT title FROM movies
+
+Result
+title                
+-------------------------------------
+ Iron Man
+ The Incredible Hulk
+ Iron Man 2
+ Thor
+ Captain America: The First Avenger
+ Avengers Assemble
+ Iron Man 3
+ Thor: The Dark World
+ Captain America: The Winter Soldier
+ Guardians of the Galaxy
+ Avengers: Age of Ultron
+ Ant-Man
+ Captain America: Civil War
+ Doctor Strange
+ Guardians of the Galaxy 2
+ Spider-Man: Homecoming
+ Thor: Ragnarok
+ Black Panther
+(18 rows)
+
 6.  We forgot one of the main characters! Add Bart Simpson to the 'people' table
 7.  Eric Cartman has decided to hijack our movie evening, Remove him from the table of people.
 8.  The cinema has just heard that they will be holding an exclusive midnight showing of 'Avengers: Infinity War'!! Create a new entry in the 'movies' table to reflect this.
