@@ -22,11 +22,11 @@ Use the supplied data as the source of data to answer the questions. Copy the SQ
 
 ## Questions
 
-1.  Return ALL the data in the 'movies' table.
+__1.  Return ALL the data in the 'movies' table.__
 
 SELECT * FROM movies
 
-Returns
+__Returns__
 
 id |                title                | year | show_time 
 ----+-------------------------------------+------+-----------
@@ -45,11 +45,11 @@ id |                title                | year | show_time
  13 | Ant-Man                             | 2015 | 13:00
  14 | Captain America: Civil War          | 2016 | 12:35
 
-2.  Return ONLY the name column from the 'people' table
+__2.  Return ONLY the name column from the 'people' table__
 
 SELECT name FROM people;
 
-Result
+__Result__
 
 name         
 ----------------------
@@ -69,13 +69,13 @@ name
  Montgomery Burns
 
 
-3.  Oops! Someone spelled Krusty The Clown's name wrong! Change it to reflect the proper spelling (Crusty should be Krusty).
+__3.  Oops! Someone spelled Krusty The Clown's name wrong! Change it to reflect the proper spelling (Crusty should be Krusty).__
 
 UPDATE people SET name = ('Krusty the Clown') WHERE name = 'Crusty the Clown';
 
 SELECT name FROM people
 
-Result
+__Result__
 name         
 ----------------------
  Homer Simpson
@@ -96,24 +96,24 @@ name
  Krusty the Clown
 (16 rows)
 
-4.  Return ONLY Homer Simpson's name from the 'people' table.
+__4.  Return ONLY Homer Simpson's name from the 'people' table.__
 
 SELECT name FROM people WHERE name = 'Homer Simpson'
 
-Result
+__Result__
 name      
 ---------------
  Homer Simpson
 (1 row)
 
-5.  The cinema is showing 'Batman Begins', but Batman is DC, not Marvel! Delete the entry from the 'movies' table.
+__5.  The cinema is showing 'Batman Begins', but Batman is DC, not Marvel! Delete the entry from the 'movies' table.__
 
 
 DELETE FROM movies WHERE title = 'Batman Begins';
 
 SELECT title FROM movies
 
-Result
+__Result__
 title                
 -------------------------------------
  Iron Man
@@ -136,11 +136,176 @@ title
  Black Panther
 (18 rows)
 
-6.  We forgot one of the main characters! Add Bart Simpson to the 'people' table
-7.  Eric Cartman has decided to hijack our movie evening, Remove him from the table of people.
-8.  The cinema has just heard that they will be holding an exclusive midnight showing of 'Avengers: Infinity War'!! Create a new entry in the 'movies' table to reflect this.
-9.  The cinema would like to make the Iron Man movies a triple billing. Find out the show time of "Iron Man 2" and set the show time of "Iron Man 3" to start two hours later.
+__6.  We forgot one of the main characters! Add Bart Simpson to the 'people' table__
+
+INSERT INTO people (name) VALUES ('Bart Simpson');
+
+SELECT name FROM people
+
+__Result__
+name         
+----------------------
+ Homer Simpson
+ Marge Simpson
+ Lisa Simpson
+ Maggie Simpson
+ Patty Bouvier
+ Selma Bouvier
+ Kent Brockman
+ Ned Flanders
+ Barney Gumble
+ Itchy
+ Eric Cartman
+ Scratchy
+ Montgomery Burns
+ Mayor Joe Quimby
+ Groundskeeper Willie
+ Krusty the Clown
+ Bart Simpson
+
+__7.  Eric Cartman has decided to hijack our movie evening, Remove him from the table of people.__
+
+DELETE FROM people WHERE name = ('Eric Cartman');
+
+SELECT name FROM people
+
+__Result__
+
+name         
+----------------------
+ Homer Simpson
+ Marge Simpson
+ Lisa Simpson
+ Maggie Simpson
+ Patty Bouvier
+ Selma Bouvier
+ Kent Brockman
+ Ned Flanders
+ Barney Gumble
+ Itchy
+ Scratchy
+ Montgomery Burns
+ Mayor Joe Quimby
+ Groundskeeper Willie
+ Krusty the Clown
+ Bart Simpson
+(16 rows)
+
+
+__8.  The cinema has just heard that they will be holding an exclusive midnight showing of 'Avengers: Infinity War'!! Create a new entry in the 'movies' table to reflect this.__
+
+INSERT INTO movies (title, year, show_time) VALUES ('Avengers: Infinity War', 2020, '00:00');
+
+SELECT * FROM movies
+
+__Result__
+
+id |                title                | year | show_time 
+----+-------------------------------------+------+-----------
+  1 | Iron Man                            | 2008 | 17:00
+  2 | The Incredible Hulk                 | 2008 | 23:55
+  3 | Iron Man 2                          | 2010 | 18:45
+  4 | Thor                                | 2011 | 15:45
+  5 | Captain America: The First Avenger  | 2011 | 14:15
+  6 | Avengers Assemble                   | 2012 | 14:45
+  7 | Iron Man 3                          | 2013 | 21:55
+  8 | Thor: The Dark World                | 2013 | 22:55
+ 10 | Captain America: The Winter Soldier | 2014 | 18:25
+ 11 | Guardians of the Galaxy             | 2014 | 13:10
+ 12 | Avengers: Age of Ultron             | 2015 | 20:20
+ 13 | Ant-Man                             | 2015 | 13:00
+ 14 | Captain America: Civil War          | 2016 | 12:35
+ 15 | Doctor Strange                      | 2016 | 22:00
+ 16 | Guardians of the Galaxy 2           | 2017 | 14:05
+ 17 | Spider-Man: Homecoming              | 2017 | 23:00
+ 18 | Thor: Ragnarok                      | 2017 | 22:10
+ 19 | Black Panther                       | 2018 | 21:00
+ 20 | Avengers: Infinity War              | 2020 | 00:00
+(19 rows)
+
+__9.  The cinema would like to make the Iron Man movies a triple billing. Find out the show time of "Iron Man 2" and set the show time of "Iron Man 3" to start two hours later.__
+
+UPDATE movies SET show_time = ('20:45') WHERE show_time = '21:55';
+
+SELECT * FROM movies
+
+__Result__
+
+id |                title                | year | show_time 
+----+-------------------------------------+------+-----------
+  1 | Iron Man                            | 2008 | 17:00
+  2 | The Incredible Hulk                 | 2008 | 23:55
+  3 | Iron Man 2                          | 2010 | 18:45
+  4 | Thor                                | 2011 | 15:45
+  5 | Captain America: The First Avenger  | 2011 | 14:15
+  6 | Avengers Assemble                   | 2012 | 14:45
+  8 | Thor: The Dark World                | 2013 | 22:55
+ 10 | Captain America: The Winter Soldier | 2014 | 18:25
+ 11 | Guardians of the Galaxy             | 2014 | 13:10
+ 12 | Avengers: Age of Ultron             | 2015 | 20:20
+ 13 | Ant-Man                             | 2015 | 13:00
+ 14 | Captain America: Civil War          | 2016 | 12:35
+ 15 | Doctor Strange                      | 2016 | 22:00
+ 16 | Guardians of the Galaxy 2           | 2017 | 14:05
+ 17 | Spider-Man: Homecoming              | 2017 | 23:00
+ 18 | Thor: Ragnarok                      | 2017 | 22:10
+ 19 | Black Panther                       | 2018 | 21:00
+ 20 | Avengers: Infinity War              | 2020 | 00:00
+  7 | Iron Man 3                          | 2013 | 20:45
+(19 rows)
 
 ## Extension
 
 1.  Research how to delete multiple entries from your table in a single command.
+
+__Method_1__
+__Removing the Iron Man Movies__
+
+DELETE FROM movies WHERE id IN (1, 3, 7); 
+
+SELECT * FROM movies
+
+__Result__
+id |                title                | year | show_time 
+----+-------------------------------------+------+-----------
+  2 | The Incredible Hulk                 | 2008 | 23:55
+  4 | Thor                                | 2011 | 15:45
+  5 | Captain America: The First Avenger  | 2011 | 14:15
+  6 | Avengers Assemble                   | 2012 | 14:45
+  8 | Thor: The Dark World                | 2013 | 22:55
+ 10 | Captain America: The Winter Soldier | 2014 | 18:25
+ 11 | Guardians of the Galaxy             | 2014 | 13:10
+ 12 | Avengers: Age of Ultron             | 2015 | 20:20
+ 13 | Ant-Man                             | 2015 | 13:00
+ 14 | Captain America: Civil War          | 2016 | 12:35
+ 15 | Doctor Strange                      | 2016 | 22:00
+ 16 | Guardians of the Galaxy 2           | 2017 | 14:05
+ 17 | Spider-Man: Homecoming              | 2017 | 23:00
+ 18 | Thor: Ragnarok                      | 2017 | 22:10
+ 19 | Black Panther                       | 2018 | 21:00
+ 20 | Avengers: Infinity War              | 2020 | 00:00
+(16 rows)
+
+__Method_2__
+__Removing movies that were made in 2017__
+
+DELETE FROM movies WHERE year = 2017;
+
+SELECT * FROM movies
+
+id |                title                | year | show_time 
+----+-------------------------------------+------+-----------
+  2 | The Incredible Hulk                 | 2008 | 23:55
+  4 | Thor                                | 2011 | 15:45
+  5 | Captain America: The First Avenger  | 2011 | 14:15
+  6 | Avengers Assemble                   | 2012 | 14:45
+  8 | Thor: The Dark World                | 2013 | 22:55
+ 10 | Captain America: The Winter Soldier | 2014 | 18:25
+ 11 | Guardians of the Galaxy             | 2014 | 13:10
+ 12 | Avengers: Age of Ultron             | 2015 | 20:20
+ 13 | Ant-Man                             | 2015 | 13:00
+ 14 | Captain America: Civil War          | 2016 | 12:35
+ 15 | Doctor Strange                      | 2016 | 22:00
+ 19 | Black Panther                       | 2018 | 21:00
+ 20 | Avengers: Infinity War              | 2020 | 00:00
+(13 rows)
